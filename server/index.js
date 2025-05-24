@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/chatapp';
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
+const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5000';
 
 // Create uploads directory if it doesn't exist
 const uploadsDir = path.join(__dirname, 'uploads');
@@ -333,7 +334,7 @@ app.post('/api/upload', auth, upload.single('image'), (req, res) => {
     }
 
     // Return the URL for the uploaded image
-    const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const imageUrl = `${BACKEND_URL}/uploads/${req.file.filename}`;
     res.json({ url: imageUrl });
   } catch (error) {
     console.error('Upload error:', error);
@@ -362,7 +363,7 @@ app.post('/api/users/avatar', auth, upload.single('avatar'), async (req, res) =>
     }
 
     // Update user's avatar
-    const avatarUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const avatarUrl = `${BACKEND_URL}/uploads/${req.file.filename}`;
     user.avatar = avatarUrl;
     await user.save();
 

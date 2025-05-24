@@ -5,9 +5,8 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: |
-      cd server && yarn install
-    startCommand: cd server && yarn start
+    buildCommand: npm install && cd client && npm install && cd .. && npm run build
+    startCommand: cd server && npm start
     envVars:
       - key: NODE_ENV
         value: production
@@ -15,6 +14,8 @@ services:
         sync: false
       - key: JWT_SECRET
         sync: false
+      - key: BACKEND_URL
+        value: https://chat-app-backend-q9gt.onrender.com
       - key: CLIENT_URL
         value: "https://chat-app-frontend.vercel.app"
       - key: PORT

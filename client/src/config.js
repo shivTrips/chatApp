@@ -6,8 +6,8 @@ const config = {
   },
   // Production
   production: {
-    apiUrl: 'https://your-backend-url.onrender.com', // We'll update this after deployment
-    socketUrl: 'https://your-backend-url.onrender.com' // We'll update this after deployment
+    apiUrl: '', // Empty string for relative paths
+    socketUrl: '' // Empty string for relative paths
   }
 };
 

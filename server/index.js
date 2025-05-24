@@ -59,6 +59,9 @@ app.use(cors({
 app.use(express.json());
 app.use('/uploads', express.static(uploadsDir));
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
 // Auth middleware
 const auth = async (req, res, next) => {
   try {
@@ -373,6 +376,12 @@ app.post('/api/users/avatar', auth, upload.single('avatar'), async (req, res) =>
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
+});
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 // Start server

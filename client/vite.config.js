@@ -23,11 +23,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.VITE_API_URL || 'https://chat-app-backend.onrender.com',
+        target: process.env.VITE_API_URL || 'https://chat-app-clientt.onrender.com',
         changeOrigin: true,
       },
       '/socket.io': {
-        target: process.env.VITE_API_URL || 'https://chat-app-backend.onrender.com',
+        target: process.env.VITE_API_URL || 'https://chat-app-clientt.onrender.com',
         changeOrigin: true,
         ws: true,
       }

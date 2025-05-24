@@ -6,11 +6,31 @@ services:
     region: oregon
     plan: free
     buildCommand: |
-      # Install dependencies
+      # Debug: Show current directory
+      pwd
+      ls -la
+      
+      # Install root dependencies
       yarn install
-      cd client && yarn install && yarn build
-      cd ../server && yarn install
+      
+      # Install and build frontend
+      echo "Building frontend..."
+      cd client
+      yarn install
+      yarn build
+      ls -la dist
       cd ..
+      
+      # Install backend dependencies
+      echo "Installing backend dependencies..."
+      cd server
+      yarn install
+      cd ..
+      
+      # Debug: Show final structure
+      echo "Final directory structure:"
+      ls -la
+      ls -la client/dist
     startCommand: cd server && yarn start
     envVars:
       - key: NODE_ENV

@@ -1,14 +1,12 @@
 services:
   # Backend service
   - type: web
-    name: chat-app
+    name: chat-app-backend
     env: node
     region: oregon
     plan: free
     buildCommand: |
-      # Make build script executable and run it
-      chmod +x build.sh
-      ./build.sh
+      cd server && yarn install
     startCommand: cd server && yarn start
     envVars:
       - key: NODE_ENV
@@ -18,11 +16,11 @@ services:
       - key: JWT_SECRET
         sync: false
       - key: CLIENT_URL
-        sync: false
+        value: "https://chat-app-frontend.vercel.app"
       - key: PORT
         value: "10000"
-      - key: VITE_API_URL
-        value: "https://chat-app.onrender.com"
+      - key: CORS_ORIGIN
+        value: "https://chat-app-frontend.vercel.app"
 
   # Frontend service
   - type: web

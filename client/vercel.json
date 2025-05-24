@@ -1,22 +1,18 @@
 {
   "name": "chat-app-frontend",
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "buildCommand": "yarn build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "installCommand": "yarn install",
+  "nodeVersion": "20.x",
+  "env": {
+    "VITE_API_URL": "https://chat-app-backend.onrender.com"
+  },
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-    "VITE_API_URL": "https://chat-app-backend.onrender.com"
-  }
+  ]
 } 

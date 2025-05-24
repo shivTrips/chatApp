@@ -6,7 +6,7 @@ services:
     region: oregon
     plan: free
     buildCommand: |
-      cd client && npm install && npm run build
+      cd client && npm install && npx vite build
       cd ../server && npm install
     startCommand: cd server && npm start
     envVars:

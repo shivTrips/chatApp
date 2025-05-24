@@ -5,33 +5,8 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: |
-      # Debug: Show current directory and Node version
-      pwd
-      node -v
-      npm -v
-      
-      # Clean install of server dependencies
-      cd server
-      rm -rf node_modules package-lock.json
-      npm cache clean --force
-      npm install --verbose
-      
-      # Debug: List installed modules
-      ls -la node_modules/express
-      
-      # Install and build frontend
-      cd ../client
-      npm install
-      npm run build
-      
-      # Return to root
-      cd ..
-    startCommand: |
-      # Debug: Show current directory and installed modules
-      pwd
-      ls -la server/node_modules/express
-      cd server && npm start
+    buildCommand: npm run install:all && npm run build
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production

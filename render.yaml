@@ -5,16 +5,14 @@ services:
     env: node
     region: oregon
     plan: free
-    rootDir: .
     buildCommand: |
-      # Install all dependencies first
+      # Install and build frontend
+      cd client
       npm install
-      cd client && npm install
-      cd ../server && npm install
-      cd ..
-      # Build frontend
-      cd client && npm install -g vite && npm run build
-      cd ..
+      npm run build
+      # Install backend dependencies
+      cd ../server
+      npm install
     startCommand: cd server && npm start
     envVars:
       - key: NODE_ENV

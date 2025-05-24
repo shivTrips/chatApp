@@ -22,7 +22,7 @@ services:
       echo "Client directory contents:"
       ls -la
       echo "Running vite build..."
-      yarn build
+      NODE_ENV=production yarn build
       echo "Checking dist directory:"
       ls -la dist || echo "dist directory not found!"
       echo "Checking dist contents:"
@@ -34,7 +34,18 @@ services:
       ls -la
       echo "Checking client/dist:"
       ls -la client/dist || echo "client/dist not found!"
-    startCommand: cd server && yarn start
+      
+      # Create a .env file for the client
+      echo "Creating client .env file..."
+      echo "VITE_API_URL=https://chat-app.onrender.com" > client/.env
+    startCommand: |
+      # Debug: Show directory structure before starting
+      echo "Starting server..."
+      echo "Current directory structure:"
+      ls -la
+      echo "Client dist contents:"
+      ls -la client/dist || echo "client/dist not found!"
+      cd server && yarn start
     envVars:
       - key: NODE_ENV
         value: production

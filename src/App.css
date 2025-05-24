@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: #a7bcff;
+}
+
+/* Basic styles for the chat layout */
+.container > * {
+  flex: 1;
+}
+
+.container > *:first-child {
+  flex: 0.4;
+}
+
+.container > *:last-child {
+  flex: 1.6;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+} 

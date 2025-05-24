@@ -1,0 +1,51 @@
+.list{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid grey;
+}
+
+.other-user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.other-user:hover {
+    background-color: #f5f5f5;
+}
+
+.other-user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.other-user .texts {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.other-user .texts span {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.other-user .texts p {
+    font-size: 14px;
+    color: #666;
+}
+
+.other-user .texts p.online {
+    color: #4CAF50;
+}
+
+.other-user .texts p.offline {
+    color: #9e9e9e;
+}

@@ -1,0 +1,371 @@
+.chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #f5f5f5;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.top {
+    background-color: #f0f2f5;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 70%;
+}
+
+.user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.texts {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0; /* For text truncation */
+}
+
+.texts span {
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.texts p {
+    font-size: 0.8rem;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logout-button {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+.center {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.message {
+    display: flex;
+    gap: 10px;
+    max-width: 85%;
+    width: fit-content;
+}
+
+.message.own {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.texts {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+
+.message.own .texts {
+    background-color: #0084ff;
+    color: white;
+}
+
+.texts p {
+    margin: 0;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.texts span {
+    font-size: 0.7rem;
+    color: #999;
+    margin-top: 5px;
+    display: block;
+}
+
+.message.own .texts span {
+    color: #e6e6e6;
+}
+
+.message-image {
+    max-width: min(300px, 85vw);
+    max-height: 300px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.message-image:hover {
+    transform: scale(1.02);
+}
+
+.bottom {
+    padding: 10px 20px;
+    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #ddd;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.icons img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.icons img:hover {
+    opacity: 1;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    outline: none;
+    font-size: 16px; /* Prevent zoom on iOS */
+    min-width: 0; /* Allow input to shrink */
+}
+
+.emoji {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.emoji img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.emoji img:hover {
+    opacity: 1;
+}
+
+.picker {
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+    z-index: 100;
+}
+
+/* Make emoji picker responsive */
+.picker .emoji-picker-react {
+    width: 100% !important;
+    max-width: 350px;
+}
+
+.sendButton {
+    padding: 8px 16px;
+    background-color: #0084ff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.sendButton:hover:not(:disabled) {
+    background-color: #0073e6;
+}
+
+.sendButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.loading, .no-messages {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
+.chat-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #666;
+    font-style: italic;
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .chat {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .top {
+        padding: 8px 12px;
+    }
+
+    .user img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .texts span {
+        font-size: 0.9rem;
+    }
+
+    .texts p {
+        font-size: 0.7rem;
+    }
+
+    .logout-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .center {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+
+    .bottom {
+        padding: 8px 12px;
+    }
+
+    .icons img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .emoji img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .sendButton {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Adjust emoji picker for mobile */
+    .picker {
+        position: fixed;
+        bottom: 70px;
+        right: 12px;
+        left: 12px;
+    }
+
+    .picker .emoji-picker-react {
+        width: 100% !important;
+        max-width: none;
+    }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 360px) {
+    .top {
+        padding: 6px 10px;
+    }
+
+    .user img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .texts span {
+        font-size: 0.8rem;
+    }
+
+    .logout-button {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+
+    .message {
+        max-width: 95%;
+    }
+
+    .bottom {
+        padding: 6px 10px;
+        gap: 6px;
+    }
+
+    input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .icons img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .emoji img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .sendButton {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}

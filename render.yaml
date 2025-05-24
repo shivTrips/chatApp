@@ -5,7 +5,16 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: chmod +x build.sh && ./build.sh
+    rootDir: .
+    buildCommand: |
+      # Install all dependencies first
+      npm install
+      cd client && npm install
+      cd ../server && npm install
+      cd ..
+      # Build frontend
+      cd client && npm install -g vite && npm run build
+      cd ..
     startCommand: cd server && npm start
     envVars:
       - key: NODE_ENV

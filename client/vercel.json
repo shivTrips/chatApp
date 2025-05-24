@@ -6,7 +6,7 @@
   "outputDirectory": "dist",
   "installCommand": "yarn install",
   "env": {
-    "VITE_API_URL": "https://chat-app-clientt.onrender.com"
+    "VITE_API_URL": "https://chat-app-backend-q9gt.onrender.com"
   },
   "routes": [
     {

@@ -53,7 +53,7 @@ const upload = multer({
 
 // Middleware
 app.use(cors({
-  origin: CLIENT_URL,
+  origin: ['https://chat-app-clientt-50irkylmv-shivanjay-tripathis-projects.vercel.app', 'http://localhost:5173'],
   credentials: true
 }));
 app.use(express.json());
@@ -224,7 +224,7 @@ app.get('/api/messages/:userId', auth, async (req, res) => {
 // Socket.io setup
 const io = socketIo(server, {
   cors: {
-    origin: CLIENT_URL,
+    origin: ['https://chat-app-clientt-50irkylmv-shivanjay-tripathis-projects.vercel.app', 'http://localhost:5173'],
     methods: ["GET", "POST"],
     credentials: true
   }

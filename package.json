@@ -7,9 +7,12 @@
     "yarn": ">=1.22.0"
   },
   "packageManager": "yarn@1.22.22",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "postinstall": "cd client && yarn install && cd ../server && yarn install",
-    "build": "cd client && yarn build",
+    "build": "yarn workspaces run build",
     "start": "cd server && yarn start"
   }
 } 

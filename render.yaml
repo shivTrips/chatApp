@@ -10,21 +10,14 @@ services:
       pwd
       ls -la
       
-      # Install root dependencies
+      # Install dependencies using workspaces
       yarn install
       
-      # Install and build frontend
+      # Build frontend
       echo "Building frontend..."
       cd client
-      yarn install
       yarn build
       ls -la dist
-      cd ..
-      
-      # Install backend dependencies
-      echo "Installing backend dependencies..."
-      cd server
-      yarn install
       cd ..
       
       # Debug: Show final structure

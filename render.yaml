@@ -8,11 +8,8 @@ services:
     buildCommand: |
       # Install dependencies
       yarn install
-      cd client && yarn install
+      cd client && yarn install && yarn build
       cd ../server && yarn install
-      cd ..
-      # Build frontend
-      cd client && yarn build
       cd ..
     startCommand: cd server && yarn start
     envVars:
@@ -24,6 +21,8 @@ services:
         sync: false
       - key: CLIENT_URL
         sync: false
+      - key: PORT
+        value: "10000"
 
   # Frontend service
   - type: web

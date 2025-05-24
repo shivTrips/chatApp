@@ -5,7 +5,7 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: npm install && cd client && npm install && cd .. && npm run build
+    buildCommand: cd server && npm install
     startCommand: cd server && npm start
     envVars:
       - key: NODE_ENV
@@ -17,13 +17,11 @@ services:
       - key: BACKEND_URL
         value: https://chat-app-backend-q9gt.onrender.com
       - key: CLIENT_URL
-        value: "https://chat-app-frontend.vercel.app"
-      - key: PORT
-        value: "10000"
+        value: "https://chat-app-clientt-50irkylmv-shivanjay-tripathis-projects.vercel.app"
       - key: CORS_ORIGIN
-        value: "https://chat-app-frontend.vercel.app"
+        value: "https://chat-app-clientt-50irkylmv-shivanjay-tripathis-projects.vercel.app"
 
-  # Frontend service
+  # Frontend service (can be removed since we're using Vercel)
   - type: web
     name: chat-app-frontend
     env: node
@@ -33,7 +31,7 @@ services:
     startCommand: cd client && npm run preview
     envVars:
       - key: VITE_API_URL
-        sync: false
+        value: "https://chat-app-backend-q9gt.onrender.com"
     staticPublishPath: ./client/dist
     routes:
       - type: rewrite

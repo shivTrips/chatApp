@@ -1,11 +1,10 @@
 {
   "name": "chat-app-frontend",
   "version": 2,
+  "framework": "vite",
   "buildCommand": "yarn build",
   "outputDirectory": "dist",
-  "framework": "vite",
   "installCommand": "yarn install",
-  "nodeVersion": "20.x",
   "env": {
     "VITE_API_URL": "https://chat-app-backend.onrender.com"
   },

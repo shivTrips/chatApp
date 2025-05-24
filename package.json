@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "scripts": {
-    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
-    "build": "cd client && npm run build",
-    "start": "cd server && npm start"
+    "install:all": "yarn install && cd client && yarn install && cd ../server && yarn install",
+    "build": "cd client && yarn build",
+    "start": "cd server && yarn start"
   }
 } 

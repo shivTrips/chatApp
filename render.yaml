@@ -5,8 +5,8 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: npm run install:all && npm run build
-    startCommand: npm start
+    buildCommand: yarn install:all && yarn build
+    startCommand: yarn start
     envVars:
       - key: NODE_ENV
         value: production

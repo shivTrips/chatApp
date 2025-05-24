@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "20.x",
+    "yarn": ">=1.22.0"
   },
+  "packageManager": "yarn@1.22.22",
   "scripts": {
-    "install:all": "yarn install && cd client && yarn install && cd ../server && yarn install",
+    "postinstall": "cd client && yarn install && cd ../server && yarn install",
     "build": "cd client && yarn build",
     "start": "cd server && yarn start"
   }

@@ -6,46 +6,10 @@ services:
     region: oregon
     plan: free
     buildCommand: |
-      # Debug: Show current directory and environment
-      echo "Current directory:"
-      pwd
-      echo "Directory contents:"
-      ls -la
-      
-      # Clean install dependencies
-      echo "Installing dependencies..."
-      yarn install --frozen-lockfile
-      
-      # Build frontend with explicit steps
-      echo "Building frontend..."
-      cd client
-      echo "Client directory contents:"
-      ls -la
-      echo "Running vite build..."
-      NODE_ENV=production yarn build
-      echo "Checking dist directory:"
-      ls -la dist || echo "dist directory not found!"
-      echo "Checking dist contents:"
-      ls -la dist/ || echo "dist directory is empty!"
-      cd ..
-      
-      # Final directory check
-      echo "Final directory structure:"
-      ls -la
-      echo "Checking client/dist:"
-      ls -la client/dist || echo "client/dist not found!"
-      
-      # Create a .env file for the client
-      echo "Creating client .env file..."
-      echo "VITE_API_URL=https://chat-app.onrender.com" > client/.env
-    startCommand: |
-      # Debug: Show directory structure before starting
-      echo "Starting server..."
-      echo "Current directory structure:"
-      ls -la
-      echo "Client dist contents:"
-      ls -la client/dist || echo "client/dist not found!"
-      cd server && yarn start
+      # Make build script executable and run it
+      chmod +x build.sh
+      ./build.sh
+    startCommand: cd server && yarn start
     envVars:
       - key: NODE_ENV
         value: production

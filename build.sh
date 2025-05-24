@@ -4,7 +4,7 @@
 echo "Building frontend..."
 cd client
 npm install
-npm run build
+npx vite build
 cd ..
 
 # Install backend dependencies

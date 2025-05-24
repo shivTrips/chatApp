@@ -6,13 +6,10 @@ services:
     region: oregon
     plan: free
     buildCommand: |
-      # Install and build frontend
-      cd client
-      npm install
-      npm run build
+      # Install dependencies and build frontend
+      cd client && yarn install && yarn build
       # Install backend dependencies
-      cd ../server
-      npm install
+      cd ../server && yarn install
     startCommand: cd server && npm start
     envVars:
       - key: NODE_ENV

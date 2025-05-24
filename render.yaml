@@ -6,24 +6,34 @@ services:
     region: oregon
     plan: free
     buildCommand: |
-      # Debug: Show current directory
+      # Debug: Show current directory and environment
+      echo "Current directory:"
       pwd
+      echo "Directory contents:"
       ls -la
       
-      # Install dependencies using workspaces
-      yarn install
+      # Clean install dependencies
+      echo "Installing dependencies..."
+      yarn install --frozen-lockfile
       
-      # Build frontend
+      # Build frontend with explicit steps
       echo "Building frontend..."
       cd client
+      echo "Client directory contents:"
+      ls -la
+      echo "Running vite build..."
       yarn build
-      ls -la dist
+      echo "Checking dist directory:"
+      ls -la dist || echo "dist directory not found!"
+      echo "Checking dist contents:"
+      ls -la dist/ || echo "dist directory is empty!"
       cd ..
       
-      # Debug: Show final structure
+      # Final directory check
       echo "Final directory structure:"
       ls -la
-      ls -la client/dist
+      echo "Checking client/dist:"
+      ls -la client/dist || echo "client/dist not found!"
     startCommand: cd server && yarn start
     envVars:
       - key: NODE_ENV
@@ -36,6 +46,8 @@ services:
         sync: false
       - key: PORT
         value: "10000"
+      - key: VITE_API_URL
+        value: "https://chat-app.onrender.com"
 
   # Frontend service
   - type: web
